@@ -4,9 +4,9 @@ from flask import Flask, jsonify, request
 import json
 import os
 
-app = Flask(__name__)
 
-
+class GameInfo:
+    def __init__(self):
 TITLE_ID = "7285D"
 SECRET_KEY = "N5W3JYHD1SZH9TYQPNB5KSTOSP9TUUAECN7WRY61NYXE7PN3H1"
 API_KEY = "OC|9329267377126200|d756f190aa0d4dcb32329c58a705e085"
