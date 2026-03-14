@@ -1,19 +1,133 @@
+✞GhostGm13✞
+ghostgm13alt
+Online
+
+This is the start of the #📁・photon-server-fix channel. 
+Barkin — 8/1/2025 11:17 PM
+https://public-backends.vercel.app/api/photon 
+kratozz — 8/10/2025 9:49 PM
+if u dont wanna use this use this instead it also has get and submit agreements stuff
 import requests
 import random
 from flask import Flask, jsonify, request
-import json
-import os
-
 
 class GameInfo:
     def __init__(self):
-TITLE_ID = "7285D"
-SECRET_KEY = "N5W3JYHD1SZH9TYQPNB5KSTOSP9TUUAECN7WRY61NYXE7PN3H1"
-API_KEY = "OC|9329267377126200|d756f190aa0d4dcb32329c58a705e085"
+        titleider: str = ""
+        secretkey: str = ""
 
-def get_auth_headers():
-    return {"Content-Type": "application/json", "X-SecretKey": SECRET_KEY}
- "content-type": "application/json",
+    def GetAuthHeaders(self) -> dict:
+        return {
+            "content-type": "application/json",
+            "X-SecretKey": secretkey
+        }
+
+    def GetTitle(self) -> str:
+        return titleider
+
+settings: GameInfo = GameInfo()
+app: Flask = Flask(__name__)
+playfabCache: dict = {}
+muteCache: dict = {}
+
+titleider = ""
+secretkey = ""
+
+def ReturnFunctionJson(data, funcname, funcparam={}):
+    rjson = data["FunctionParameter"]
+    userId: str = rjson.get("CallerEntityProfile").get("Lineage").get("TitlePlayerAccountId")
+
+    req = requests.post(
+        url=f"https://{titleider}.playfabapi.com/Server/ExecuteCloudScript",
+        json={
+            "PlayFabId": userId,
+            "FunctionName": funcname,
+            "FunctionParameter": funcparam
+        },
+        headers=settings.GetAuthHeaders()
+    )
+
+    if req.status_code == 200:
+        return jsonify(req.json().get("data").get("FunctionResult")), req.status_code
+    else:
+        return jsonify({}), req.status_code
+
+
+@app.route("/", methods=["POST", "GET"])
+def main():
+    return """
+        <html>
+            <head>
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+            </head>
+            <body style="font-family: 'Inter', sans-serif;">
+                <h1 style="color: red; font-size: 10px;">
+                   luckily none of this will work for YOU skidder
+                </h1>
+            </body>
+        </html>
+    """
+
+    
+@app.route("/api/GetAcceptedAgreements", methods=['POST'])
+def GetAcceptedAgreements():
+    received_data = request.get_json()
+    
+    return jsonify({"PrivacyPolicy": "2024.09.20", "TOS": "2024.09.20"})
+
+@app.route("/api/SubmitAcceptedAgreements", methods=['POST'])
+def SubmitAcceptedAgreements():
+    received_data = request.get_json()
+
+    return jsonify({"PrivacyPolicy": "2024.09.20", "TOS": "2024.09.20"})
+
+
+@app.route("/api/photon", methods=["POST"])
+def photonauth():
+    print(f"Received {request.method} request at /api/photon")
+    getjson = request.get_json()
+    Ticket = getjson.get("Ticket")
+    Nonce = getjson.get("Nonce")
+    Platform = getjson.get("Platform")
+    UserId = getjson.get("UserId")
+    nickName = getjson.get("username")
+    if request.method.upper() == "GET":
+        rjson = request.get_json()
+        print(f"{request.method} : {rjson}")
+
+        userId = Ticket.split('-')[0] if Ticket else None
+        print(f"Extracted userId: {UserId}")
+
+        if userId is None or len(userId) != 16:
+            print("Invalid userId")
+            return jsonify({
+                'resultCode': 2,
+                'message': 'Invalid token',
+                'userId': None,
+                'nickname': None
+            })
+
+... (138 lines left)
+
+message.txt
+9 KB
+works for any version backend 
+bxt [Cꜷth],  — 2/13/2026 3:45 PM
+^^^ dont use this easy method to get instaban
+just dont use any public photon auth make ur own with actual protection
+﻿
+import requests
+import random
+from flask import Flask, jsonify, request
+
+class GameInfo:
+    def __init__(self):
+        titleider: str = ""
+        secretkey: str = ""
+
+    def GetAuthHeaders(self) -> dict:
+        return {
+            "content-type": "application/json",
             "X-SecretKey": secretkey
         }
 
