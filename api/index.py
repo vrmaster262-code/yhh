@@ -15,7 +15,7 @@ def get_auth_headers():
 
 @app.route("/", methods=["POST", "GET"])
 def main():
-    return jsonify({"MOTD":"<color=red>WELCOME TO FROSTBITE RUNNING</color>\n<color=green>OWNER IS GHOSTGM13</color>\n<color=blue>DISCORD IS https://discord.gg/nNx8uBhvhF</color>"})
+    return jsonify({"MOTD":"<color=red>WELCOME TO FROSTBITE RUNNING</color>\n<color=green>OWNER IS GHOSTGM13</color>"})
     
   "GorillanalyticsChance": "4320",
   "AutoName_Adverbs": "[\"Cool\",\"Fine\",\"Bald\",\"Bold\",\"Half\",\"Only\",\"Calm\",\"Fab\",\"Ice\",\"Mad\",\"Rad\",\"Big\",\"New\",\"Old\",\"Shy\"]",
